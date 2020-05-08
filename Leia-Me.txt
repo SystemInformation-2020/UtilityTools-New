@@ -1,0 +1,11 @@
+Requer UsbWebServer 8.6 <-minimo com porta 3309
+
+Para Programadores:
+
+Requer MySql.Data ;
+
+Pacotes:
+
+Algorithimia + Newtonsoft.Json.12.0.3
+e 
+ZXing.Net.0.16.5
