@@ -386,16 +386,20 @@ namespace UtilityTools.Modal
             total = numb1 % numb2;
 
             txtResultado.Text = "Resto: " + total.ToString();
-        }
 
-        private void tabPage6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
+            btn0.Enabled = false;
+            btn1.Enabled = false;
+            btn2.Enabled = false;
+            btn3.Enabled = false;
+            btn4.Enabled = false;
+            btn5.Enabled = false;
+            btn6.Enabled = false;
+            btn7.Enabled = false;
+            btn8.Enabled = false;
+            btn9.Enabled = false;
+            btnVirgula.Enabled = false;
+            btnDiv.Enabled = false;
+            
         }
 
         private void btnDia_Click(object sender, EventArgs e)
@@ -444,6 +448,91 @@ namespace UtilityTools.Modal
             }
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            //var input = "{" + "  \"image\": \""+textBox2.Text+ "}";
+
+            var input2 = txtimgurl.Text;
+
+            var client = new Client("simGui+0ItIawILfndtvMe8Bbsd1");
+            var algorithm = client.algo("deeplearning/ColorfulImageColorization/1.1.14");
+            algorithm.setOptions(timeout: 300); // optional
+            var response = algorithm.pipeJson<object>(input2);
+
+            Console.WriteLine("");
+            Console.WriteLine("-------------------");
+            Console.WriteLine(response.result);
+            Console.WriteLine("-------------------");
+            Console.WriteLine("");
+
+            var nlp_directory = client.dir("data://PinguinZip/deeplearning/ColorfulImageColorization/temp/");
+
+            
+
+            //var acl = nlp_directory.getPermissions();
+
+            //if (acl == ReadDataAcl.PUBLIC)
+            //{
+            //    Console.WriteLine("acl is the default permissions type MY_ALGOS");
+            //}
+
+            // Update permissions to private
+
+
+            // Create your data collection if it does not exist
+
+
+            //if (acl == ReadDataAcl.MY_ALGOS)
+            //{
+            //    Console.WriteLine("acl is the default permissions type MY_ALGOS");
+            //}
+
+            //var text_file = "data://PinguinZip/nlp_directory/jack_london.txt";
+
+            //nlp_directory.updatePermissions(ReadDataAcl.PUBLIC);
+
+            var text_file = (response.result.ToString());
+
+            string colorimagesub = response.result.ToString();
+
+            string colorimagenext = response.result.ToString();
+
+            //colorimagesub = colorimagesub.Replace("data://.algo/deeplearning/ColorfulImageColorization/temp/", "");
+
+            colorimagesub = colorimagesub.Replace("data://.algo/deeplearning/ColorfulImageColorization/temp/", "");
+
+            if (client.file(text_file).exists())
+            {
+                var localfile = client.file(text_file).getFile();
+
+                MessageBox.Show(localfile.ToString());
+
+               
+            }
+            else
+            {
+                Console.WriteLine("The file does not exist");
+
+                MessageBox.Show("Arquivo Não Encontrado" + text_file);
+            }
+
+
+            //pictureBox1.Load("https://algorithmia.com/v1/data/.algo/deeplearning/ColorfulImageColorization/temp/d7be234e-f770-4fd7-a80e-47940c6bd650.png");
+
+            //pictureBox1.Load("https://algorithmia.com/v1/data/.algo/deeplearning/ColorfulImageColorization/temp/" + colorimagesub);
+
+
+    }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lblimg.Visible = true;
+            txtimgurl.Visible = true;
+            btnimgload.Visible = true;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Modal.FormFullScreen formfs = new Modal.FormFullScreen();
@@ -488,6 +577,19 @@ namespace UtilityTools.Modal
             txtConta.Text = "";
             lblConta.Text = "";
             txtResultado.Text = "";
+
+            btn0.Enabled = true;
+            btn1.Enabled = true;
+            btn2.Enabled = true;
+            btn3.Enabled = true;
+            btn4.Enabled = true;
+            btn5.Enabled = true;
+            btn6.Enabled = true;
+            btn7.Enabled = true;
+            btn8.Enabled = true;
+            btn9.Enabled = true;
+            btnVirgula.Enabled = true;
+            btnDiv.Enabled = true;
         }
     }
 }

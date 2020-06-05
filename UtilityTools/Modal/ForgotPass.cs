@@ -44,6 +44,14 @@ namespace UtilityTools.Modal
 
                 objCon.Close();
 
+                MessageBox.Show("Senha Atualizado Com Sucesso!", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.Close();
+
+                Form1 fnw = new Form1();
+               
+                fnw.Show();
+
             }
             catch (Exception a)
             {
